@@ -2,6 +2,8 @@ package com.example.EmployeeApplication.service;
 
 
 import com.example.EmployeeApplication.entity.Employee;
+import com.example.EmployeeApplication.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +17,9 @@ public class EmployeeService {
             new Employee(2, "Second Employee", "New York")
     ));
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
     public List<Employee> getAllEmployees() {
         return employeeList;
     }
@@ -26,7 +31,8 @@ public class EmployeeService {
     }
 
     public void createEmployee(Employee employee) {
-        employeeList.add(employee);
+//        employeeList.add(employee);
+        employeeRepository.save(employee);
     }
 
 

@@ -38,13 +38,13 @@ public class EmployeeController {
     }
 
     //    @RequestMapping(value = "/employees/{id}", method = RequestMethod.PUT)
-    @RequestMapping(value = "/employees/{id}")
+    @PutMapping(value = "/employees/{id}")
     public void updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
         employeeService.updateEmployee(employee);
     }
 
     //    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE)
-    @RequestMapping(value = "/employees/{id}")
+    @DeleteMapping(value = "/employees/{id}")
     public List<Employee> deleteEmployee(@PathVariable int id) {
         employeeService.deleteEmployee(id);
         return employeeService.getAllEmployees();
