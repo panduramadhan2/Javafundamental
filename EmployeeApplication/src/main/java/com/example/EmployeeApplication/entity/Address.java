@@ -15,6 +15,9 @@ public class Address {
     private String state;
     private String country;
 
+    @ManyToOne
+    private Employee employee;
+
     public Address(String line1, String line2, String zipCode, String city, String state, String country) {
         this.line1 = line1;
         this.line2 = line2;
@@ -78,5 +81,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }
