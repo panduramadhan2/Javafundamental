@@ -1,6 +1,7 @@
 package com.example.EmployeeApplication.service;
 
 
+import com.example.EmployeeApplication.entity.Address;
 import com.example.EmployeeApplication.entity.Employee;
 import com.example.EmployeeApplication.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class EmployeeService {
 
     public void createEmployee(Employee employee) {
 //        employeeList.add(employee);
+        ArrayList<Address> addressArrayList = new ArrayList<>();
+        for (Address address : employee.getAddresses()) {
+            addressArrayList.add(new Address(address.getLine1(), address.getLine2(), address.getZipCode(), address.getCity(), address.getState(), address.getCountry(), employee));
+        }
+        employee.setAddresses(addressArrayList);
         employeeRepository.save(employee);
     }
 
